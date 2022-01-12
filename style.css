@@ -4,7 +4,7 @@
 body{
   display:flex;
   flex-direction: column;
-  align-items: center;  
+  align-items: center; 
 }
 
 button{
@@ -36,26 +36,21 @@ button:active{
 
 #gridcontainer{
   display:grid;
-  background-color: aqua;
-  grid-gap:2px;
-  max-width:960px;
-  border: 4px red solid
+  background-color: white;
+  /*grid-gap:2px;*/
+ width:960px;
+ height:960px;
+  border: 4px black solid
   }
 
   .cell{
-    background-color: orange;
+    background-color: white;
+    /*width:10px;
+    height:10px;*/
 }
 
 
 
-
-.cell:hover{
-    background-color:yellow;
-}
-
-.cell:hover::after{
-    background-color: yellow;
-}
 
 
 
