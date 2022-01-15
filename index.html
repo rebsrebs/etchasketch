@@ -10,16 +10,28 @@
 
 <h1>Etch-a-Sketch</h1>    
 
+
+
 <div id="gridcontrol">
 <button class="button" id="cleargrid">Reset Grid</button>
 </div>
 
 <div id="pens">
+
+<div id ="singlecolorcontainer" class="penandcolorcontainer">
+    <div id = "colorpickertest">
+        <label for="colorpicker"></label>
+    <input type="color" id="colorpicker"
+     value="#ff0000">
+    </div>
+<button class="button pen" id="singlecolor">Single Color</button>
+</div>
 <button class="button pen" id="randomrainbow">Random Rainbow</button>
 <button class="button pen" id="grayscale">Grayscale</button>
 <button class="button pen" id="moreopaque">More Opaque</button>
 <button class="button pen" id="darker">Darker</button>
 <button class="button pen" id="eraser">Eraser</button>
+
 </div>
 
 
