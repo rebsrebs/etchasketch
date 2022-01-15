@@ -36,11 +36,13 @@ h1{
 #pickersinglecolor {
     grid-column-start: 1;
     grid-row-start: 1;
+    display:none;
   }
 
 #pickermoreopaque {
     grid-column-start: 4;
     grid-row-start: 1;
+    display:none;
   }
 
   #singlecolor {

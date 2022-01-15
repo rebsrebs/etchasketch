@@ -2,6 +2,7 @@
 
 
 const cleargrid = document.querySelector('#cleargrid');
+const singlecolor = document.querySelector('#singlecolor');
 const darker = document.querySelector('#darker');
 const randomrainbow = document.querySelector('#randomrainbow');
 const grayscale = document.querySelector('#grayscale');
@@ -136,13 +137,11 @@ function RGBtoRGBA(r, g, b){
 
 //converts RGB to HSL and then darkens it
 function RGBtoHSLdarker(r, g, b){
-    console.log(r);
-    console.log(g);
-    console.log(b);
+
      // Make r, g, and b fractions of 1
      r /= 255;
-     g /= 255;
-     b /= 255;
+  g /= 255;
+  b /= 255;
     
     // Find greatest and smallest channel values
     let cmin = Math.min(r,g,b),
@@ -151,101 +150,108 @@ function RGBtoHSLdarker(r, g, b){
     h = 0,
     s = 0,
     l = 0;
-    
-    //Calculate hue
-    //No difference
-    
-    if (delta == 0)
-    h = 0;
-    //red is max
-    else if (cmax ==r)
-    h = ((g-b) / delta) %6;
-    //green is max
-    else if (cmax == g)
-    h = (b-r) / delta + 2;
-    //blue is max
-    h = (r - g) / delta + 4;
-    
-    h = Math.round(h*60);
-    
-    //make negative hues positive behind 360 degrees
-    if (h < 0)
-       h += 360;
-    
-    //calculate lightens
-    l = (cmax +cmin)/2;
-    
-    //calculate saturation
 
-    s = delta == 0 ? 0 : delta / (1 - Math.abs(2 * l - 1));
+    // Calculate hue
+  // No difference
+  if (delta == 0)
+  h = 0;
+// Red is max
+else if (cmax == r)
+  h = ((g - b) / delta) % 6;
+// Green is max
+else if (cmax == g)
+  h = (b - r) / delta + 2;
+// Blue is max
+else
+  h = (r - g) / delta + 4;
+
+h = Math.round(h * 60);
+  
+// Make negative hues positive behind 360°
+if (h < 0)
+    h += 360;
     
-    //Multiply l and  s by 100
+   // Calculate lightness
+  l = (cmax + cmin) / 2;
+
+  // Calculate saturation
+  s = delta == 0 ? 0 : delta / (1 - Math.abs(2 * l - 1));
     
-    s = +(s * 100).toFixed(1);
-    l = +(l * 100).toFixed(1);
-    
-    //converted color is …
-    console.log("hsl(" + h + "," + s + "%," + (l-10) + "%)");
-    return "hsl(" + h + "," + s + "%," + (l-10) + "%)";
+  // Multiply l and s by 100
+  s = +(s * 100).toFixed(1);
+  l = +(l * 100).toFixed(1);
+
+  return "hsl(" + h + "," + s + "%," + (l-10) + "%)";
     }
 
 
 
     //RGBA to HSLA darker and more opaque
     function RGBAtoHSLAdarker(r, g, b, a){
-        console.log(r);
-        console.log(g);
-        console.log(b);
-        console.log(a);
          // Make r, g, and b fractions of 1
-         r /= 255;
-         g /= 255;
-         b /= 255;
-        
-        // Find greatest and smallest channel values
-        let cmin = Math.min(r,g,b),
-        cmax = Math.max(r,g,b),
-        delta = cmax - cmin,
-        h = 0,
-        s = 0,
-        l = 0;
-        
-        //Calculate hue
-        //No difference
-        
-        if (delta == 0)
-        h = 0;
-        //red is max
-        else if (cmax ==r)
-        h = ((g-b) / delta) %6;
-        //green is max
-        else if (cmax == g)
-        h = (b-r) / delta + 2;
-        //blue is max
-        h = (r - g) / delta + 4;
-        
-        h = Math.round(h*60);
-        
-        //make negative hues positive behind 360 degrees
-        if (h < 0)
-           h += 360;
-        
-        //calculate lightens
-        l = (cmax +cmin)/2;
-        
-        //calculate saturation
-    
-        s = delta == 0 ? 0 : delta / (1 - Math.abs(2 * l - 1));
-        
-        //Multiply l and  s by 100
-        
-        s = +(s * 100).toFixed(1);
-        l = +(l * 100).toFixed(1);
+     r /= 255;
+     g /= 255;
+     b /= 255;
+       
+       // Find greatest and smallest channel values
+       let cmin = Math.min(r,g,b),
+       cmax = Math.max(r,g,b),
+       delta = cmax - cmin,
+       h = 0,
+       s = 0,
+       l = 0;
+   
+       // Calculate hue
+     // No difference
+     if (delta == 0)
+     h = 0;
+   // Red is max
+   else if (cmax == r)
+     h = ((g - b) / delta) % 6;
+   // Green is max
+   else if (cmax == g)
+     h = (b - r) / delta + 2;
+   // Blue is max
+   else
+     h = (r - g) / delta + 4;
+   
+   h = Math.round(h * 60);
+     
+   // Make negative hues positive behind 360°
+   if (h < 0)
+       h += 360;
+       
+      // Calculate lightness
+     l = (cmax + cmin) / 2;
+   
+     // Calculate saturation
+     s = delta == 0 ? 0 : delta / (1 - Math.abs(2 * l - 1));
+       
+     // Multiply l and s by 100
+     s = +(s * 100).toFixed(1);
+     l = +(l * 100).toFixed(1);
         
         //converted color is …
         console.log("hsl(" + h + "," + s + "%," + (l-10) + "%," + a + ")");
         return "hsl(" + h + "," + s + "%," + (l-10) + "%," + a + ")";
         }
+
+
+        //single color
+        singlecolor.onclick = function(event) {
+
+            gridcontainer.onmouseover = function(event) {
+        let target = event.target;
+        var isGridContainer = target.hasAttribute(".gridcontainer");
+        console.log(isGridContainer);
+        if (isGridContainer == false) {
+        target.style.backgroundColor="blue"; //enter color picker input here
+        }else{
+            console.log("WHAT!!!");
+            return;
+        }
+        }}
+        
 
 
 //Draws with random rainbow pen.
@@ -261,10 +267,12 @@ if (isGridContainer == false) {
 console.log(randomColor);
 target.style.backgroundColor="#"+randomColor;
 }else{
-    alert("what!");
+    console.log("WHAT!!!");
     return;
 }
 }}
+
+
 
 
 //Erases.
