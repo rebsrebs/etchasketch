@@ -9,13 +9,13 @@ const grayscale = document.querySelector('#grayscale');
 const moreopaque = document.querySelector('#moreopaque');
 const gridcontainer = document.querySelector('#gridcontainer');
 
+
+
   
 
 
 //Event Listeners
 cleargrid.addEventListener('click', promptGridSize);
-
-
 document.addEventListener("DOMContentLoaded", function(){
     createGrid(16);
 });
@@ -242,9 +242,7 @@ if (h < 0)
 
             gridcontainer.onmouseover = function(event) {
         let target = event.target;
-        var isGridContainer = target.hasAttribute(".gridcontainer");
-        console.log(isGridContainer);
-        if (isGridContainer == false) {
+            if (event.target.className === 'cell') {
         target.style.backgroundColor="blue"; //enter color picker input here
         }else{
             console.log("WHAT!!!");
@@ -260,9 +258,7 @@ randomrainbow.onclick = function(event) {
 
     gridcontainer.onmouseover = function(event) {
 let target = event.target;
-var isGridContainer = target.hasAttribute(".gridcontainer");
-console.log(isGridContainer);
-if (isGridContainer == false) {
+if (event.target.className === 'cell') {
     var randomColor = Math.floor(Math.random()*16777215).toString(16);
 console.log(randomColor);
 target.style.backgroundColor="#"+randomColor;
@@ -281,9 +277,7 @@ eraser.onclick = function(event) {
 
     gridcontainer.onmouseover = function(event) {
 let target = event.target;
-var isCell = target.hasAttribute(".cell");
-if (isCell = true) {
-  
+if (event.target.className === 'cell') {
 target.style.backgroundColor = "";
 target.style.opacity = "";
 target.style.backgroundColor="rgba(242,13,242,0)";
@@ -300,9 +294,7 @@ moreopaque.onclick = function(event) {
 gridcontainer.onmouseover = function(event) {
     let target = event.target;
 
-    var isCell = target.hasAttribute(".cell");
-    if (isCell = true) {
-
+    if (event.target.className === 'cell') {
     //gets background color of cell that was clicked
     let style = getComputedStyle(target);
     //saves that color as variable targetColor
@@ -337,9 +329,8 @@ grayscale.onclick = function(event) {
     gridcontainer.onmouseover = function(event) {
         let target = event.target;
     
-        let isCell = target.hasAttribute(".cell");
-        if (isCell = true) {
-    
+        if (event.target.className === 'cell') {
+
         let style = getComputedStyle(target);
         let targetColor = style.backgroundColor;
         console.log(targetColor);
@@ -372,10 +363,7 @@ darker.onclick = function(event) {
 
     gridcontainer.onmouseover = function(event) {
         let target = event.target;
-    
-        let isCell = target.hasAttribute(".cell");
-        if (isCell = true) {
-    
+    if (event.target.className === 'cell') {
     
         let style = getComputedStyle(target);
         let targetColor = style.backgroundColor;
