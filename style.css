@@ -36,7 +36,6 @@ h1{
 #pickersinglecolor {
     grid-column-start: 1;
     grid-row-start: 1;
-    display:none;
   }
 
 #pickermoreopaque {
@@ -78,27 +77,6 @@ h1{
 
 
 
-
-
-
-
-/*.item{
-    align-items:center;
-}
-
-
-
-
-#pens{
-    display:flex;
-    flex-direction:horizontal;
-    margin: 0 -5px 30px -5px;
-}
-
-    .penandcolorcontainer{
-    display:flex;
-    flex-direction:column;
-}*/
 
 .pen{
     margin: 0 5px 0 5px;

@@ -10,6 +10,10 @@ const moreopaque = document.querySelector('#moreopaque');
 const gridcontainer = document.querySelector('#gridcontainer');
 
 
+const pickersinglecolor = document.querySelector('#pickersinglecolor');
+
+
+
 
   
 
@@ -237,18 +241,7 @@ if (h < 0)
         }
 
 
-        //single color
-        singlecolor.onclick = function(event) {
-
-            gridcontainer.onmouseover = function(event) {
-        let target = event.target;
-            if (event.target.className === 'cell') {
-        target.style.backgroundColor="blue"; //enter color picker input here
-        }else{
-            console.log("WHAT!!!");
-            return;
-        }
-        }}
+    
         
 
 
@@ -395,8 +388,25 @@ darker.onclick = function(event) {
 
 
 
+let myColor = "rgb(255,0,0)";
+
+pickersinglecolor.addEventListener('input', function(){
+        myColor = pickersinglecolor.value;
+        //figure out how to close color picker too
+        console.log(myColor);
+         });
 
 
+//single color
+singlecolor.onclick = function(event) {
 
-
+        gridcontainer.onmouseover = function(event) {
+    let target = event.target;
+        if (event.target.className === 'cell') {
+    target.style.backgroundColor=myColor; 
+    }else{
+        console.log("WHAT!!!");
+        return;
+    }
+    }}
         
