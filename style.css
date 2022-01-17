@@ -19,9 +19,9 @@ h1{
 
 #penscontainer{
     display:grid;
-    grid-template:repeat(2,1fr) / repeat(6,1fr);
+    grid-template:repeat(2,1fr) / repeat(7,1fr);
     background-color: white;
-    width: 80%;
+    width: 70%;
     min-width: 600px;
     text-align:center;
     row-gap:0px;
@@ -39,7 +39,7 @@ h1{
   }
 
 #pickermoreopaque {
-    grid-column-start: 4;
+    grid-column-start: 5;
     grid-row-start: 1;
     display:none;
   }
@@ -54,24 +54,29 @@ h1{
     grid-row-start: 2;
   }
 
-  #grayscale {
+  #HSLArainbow {
     grid-column-start: 3;
     grid-row-start: 2;
   }
 
-  #moreopaque {
+  #grayscale {
     grid-column-start: 4;
     grid-row-start: 2;
   }
 
-  #darker {
+  #moreopaque {
     grid-column-start: 5;
+    grid-row-start: 2;
+  }
+
+  #darker {
+    grid-column-start: 6;
     grid-row-start: 2;
   }
 
 
   #eraser {
-    grid-column-start: 6;
+    grid-column-start: 7;
     grid-row-start: 2;
   }
 

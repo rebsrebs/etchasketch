@@ -5,6 +5,7 @@ const cleargrid = document.querySelector('#cleargrid');
 const singlecolor = document.querySelector('#singlecolor');
 const darker = document.querySelector('#darker');
 const randomrainbow = document.querySelector('#randomrainbow');
+const HSLArainbow = document.querySelector('#HSLArainbow');
 const grayscale = document.querySelector('#grayscale');
 const moreopaque = document.querySelector('#moreopaque');
 const gridcontainer = document.querySelector('#gridcontainer');
@@ -97,7 +98,11 @@ console.log(b2);
     if (value >= 255){
         return "rgba(165,165,165,0)";
     }else{
-    return "rgb(" + value +  "," + value + "," + value + ")"; }
+
+        return "rgb(" + value +  "," + value + "," + value + ")"; }    
+
+        //this makes it too light
+    //return "rgba(" + value +  "," + value + "," + value + "," + a + ")"; }
 }
 
 
@@ -244,22 +249,6 @@ if (h < 0)
     
         
 
-
-//Draws with random rainbow pen.
-
-randomrainbow.onclick = function(event) {
-
-    gridcontainer.onmouseover = function(event) {
-let target = event.target;
-if (event.target.className === 'cell') {
-    var randomColor = Math.floor(Math.random()*16777215).toString(16);
-console.log(randomColor);
-target.style.backgroundColor="#"+randomColor;
-}else{
-    console.log("WHAT!!!");
-    return;
-}
-}}
 
 
 
@@ -410,3 +399,39 @@ singlecolor.onclick = function(event) {
     }
     }}
         
+
+
+//Draws with random rainbow pen.
+
+randomrainbow.onclick = function(event) {
+
+    gridcontainer.onmouseover = function(event) {
+let target = event.target;
+if (event.target.className === 'cell') {
+    var randomColor = Math.floor(Math.random()*16777215).toString(16);
+console.log(randomColor);
+target.style.backgroundColor="#"+randomColor;
+}else{
+    console.log("WHAT!!!");
+    return;
+}
+}}
+
+
+//Draws with random pastel rainbow HSLA pen.
+//hmm when you do grayscale pen over this it doesn't maintain alpha
+
+HSLArainbow.onclick = function(event) {
+
+    gridcontainer.onmouseover = function(event) {
+let target = event.target;
+if (event.target.className === 'cell') {
+
+    var randomPastel = `hsla(${~~(360 * Math.random())},70%,85%,0.7)`
+console.log(randomPastel);
+target.style.backgroundColor=randomPastel;
+}else{
+    console.log("WHAT!!!");
+    return;
+}
+}}
